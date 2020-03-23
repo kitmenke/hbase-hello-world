@@ -3,10 +3,10 @@ package com.kitmenke.hbase
 import org.apache.hadoop.hbase.{HBaseConfiguration, TableName}
 import org.apache.hadoop.hbase.client.{Connection, ConnectionFactory, Get}
 import org.apache.hadoop.hbase.util.Bytes
-import org.apache.log4j.Logger
+import org.apache.logging.log4j.{LogManager, Logger}
 
 object MyApp {
-  lazy val logger: Logger = Logger.getLogger(this.getClass)
+  lazy val logger: Logger = LogManager.getLogger(this.getClass)
 
   def main(args: Array[String]): Unit = {
     logger.info("MyApp starting...")
