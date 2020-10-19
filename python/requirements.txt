@@ -1,3 +1,0 @@
-happybase
-pytest
-pytest-watch
