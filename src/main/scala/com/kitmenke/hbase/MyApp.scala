@@ -13,8 +13,9 @@ object MyApp {
     var connection: Connection = null
     try {
       val conf = HBaseConfiguration.create()
-      conf.set("hbase.zookeeper.quorum", "hbase-docker")
+      conf.set("hbase.zookeeper.quorum", "CHANGE ME")
       connection = ConnectionFactory.createConnection(conf)
+      // Example code... change me
       val table = connection.getTable(TableName.valueOf("table-name"))
       val get = new Get(Bytes.toBytes("row-key"))
       val result = table.get(get)
