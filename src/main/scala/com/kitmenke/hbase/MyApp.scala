@@ -14,7 +14,7 @@ object MyApp {
     var connection: Connection = null
     try {
       val conf = HBaseConfiguration.create()
-      conf.set("hbase.zookeeper.quorum", "CHANGE ME")
+      conf.set("hbase.zookeeper.quorum", "cdh01.hourswith.expert:2181,cdh02.hourswith.expert:2181,cdh03.hourswith.expert:2181")
       connection = ConnectionFactory.createConnection(conf)
       lab1(connection)
       lab2(connection)
@@ -22,7 +22,6 @@ object MyApp {
       lab3(connection)
       lab4(connection)
       lab5(connection)
-
     } catch {
       case e: Exception => logger.error("Error in main", e)
     } finally {
@@ -41,7 +40,7 @@ object MyApp {
   }
 
   def lab1(connection: Connection): Unit = {
-    val table = connection.getTable(TableName.valueOf("kit:users"))
+    val table = connection.getTable(TableName.valueOf("kmenke:users"))
     val get = new Get("10000001")
     get.addColumn("f1", "mail")
     val result = table.get(get)
@@ -54,12 +53,12 @@ object MyApp {
     p.addColumn("f1", "name", "The Panther")
     p.addColumn("f1", "sex", "F")
     p.addColumn("f1", "favorite_color", "pink")
-    val table = connection.getTable(TableName.valueOf("kit:users"))
+    val table = connection.getTable(TableName.valueOf("kmenke:users"))
     table.put(p)
   }
 
   def lab2b(connection: Connection): Unit = {
-    val table = connection.getTable(TableName.valueOf("kit:users"))
+    val table = connection.getTable(TableName.valueOf("kmenke:users"))
     val get = new Get("99")
     val result = table.get(get)
     printResult(result)
@@ -67,20 +66,20 @@ object MyApp {
 
   def lab3(connection: Connection): Unit = {
     val s = new Scan().withStartRow("10000001").withStopRow("10006001")
-    val table = connection.getTable(TableName.valueOf("kit:users"))
+    val table = connection.getTable(TableName.valueOf("kmenke:users"))
     val result = table.getScanner(s)
     import scala.collection.JavaConverters._
     logger.debug("lab 3 size: " + result.iterator().asScala.size)
   }
 
   def lab4(connection: Connection): Unit = {
-    val table = connection.getTable(TableName.valueOf("kit:users"))
+    val table = connection.getTable(TableName.valueOf("kmenke:users"))
     val d = new Delete("99")
     table.delete(d)
   }
 
   def lab5(connection: Connection): Unit = {
-    val table = connection.getTable(TableName.valueOf("kit:users"))
+    val table = connection.getTable(TableName.valueOf("kmenke:users"))
     import scala.collection.JavaConverters._
     val gets = List("9005729", "500600", "30059640", "6005263", "800182")
       .map(key => new Get(key).addColumn("f1", "mail")).asJava
