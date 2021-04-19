@@ -1,4 +1,4 @@
-# hbase-hello-world
+# HBase Hello World
 
 An example maven project for reading and writing to HBase using Scala.
 
@@ -6,3 +6,42 @@ To open the project in Intellij, go to Open and navigate to the pom.xml in the r
 choose to open as a project. 
 
 Navigate to MyApp.scala to start editing!
+
+# The Lab
+
+Challenge #1: What is user=10000001 email address? Determine this by using a Get that *only* returns that user's email 
+address, not their complete column list.
+
+Challenge #2: Write a new user to your table with:
+
+ - Rowkey: 99
+ - username: DE-HWE
+ - name: The Panther
+ - sex: F
+ - favorite_color: pink
+
+(Note that favorite_color is a new column qualifier in this table, and we are not specifying some other columns every 
+other record has: DOB, email address, etc.)
+
+Challenge #3: How many user IDs exist between 10000001 and 10006001? (Not all user IDs exist, so the answer is *not* 
+6000)
+
+Challenge #4: Delete the user with ID = 99 that we inserted earlier.
+
+Challenge #5: There is also an operation that returns multiple results in a single HBase "Get" operation. Write a single
+HBase call that returns the email addresses for the following 5 users: 9005729, 500600, 30059640, 6005263, 800182 (Hint: 
+Look at the Javadoc for "Table")
+
+# Tips
+
+Useful resources:
+https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Get.html
+https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Put.html
+https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Scan.html
+https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Delete.html
+https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Table.html
+https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Result.html
+
+Useful functions:
+Converting a string to a byte array: `Bytes.toBytes("mystring")`
+Converting a byte array to a string: `Bytes.toString(byteArray)`
