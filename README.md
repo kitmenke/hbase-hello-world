@@ -34,7 +34,7 @@ Look at the Javadoc for "Table")
 
 # Tips
 
-##Useful resources:
+## Useful resources:
 
 https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Get.html
 https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Put.html
@@ -43,7 +43,7 @@ https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Delete.html
 https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Table.html
 https://hbase.apache.org/2.1/apidocs/org/apache/hadoop/hbase/client/Result.html
 
-##Useful functions:
+## Useful functions:
 
 Converting a string to a byte array: `Bytes.toBytes("mystring")`
 
